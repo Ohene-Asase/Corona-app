@@ -1,0 +1,29 @@
+<div class="wrapper"   style="margin: 0 !important;">
+    <div class="sect1" fxLayout="row" fxLayoutAlign="space-around center">
+        <b style="font-size: 40px;">Welcome</b>
+        <p>Get covid statistics</p>
+          
+        <form [formGroup]="loginForm"   (ngSubmit)="Login(loginForm.value)">
+        <input type="text"  formControlName="email"     placeholder="Email" class="Input">
+        <br><br><br>
+        <input type="password" formControlName="password" placeholder="Password" class="Input">
+        <br><br>
+        <input type="checkbox"> <span style="padding-left: 10px;">Remember me?</span> 
+
+        <br> <br>
+        <button  type="submit">Login</button>
+        <br>
+        <p class="or">or</p>
+        <button  (click)="googleLogin()">Login with Google</button>
+        <br><br>
+        <button>Login with facebook</button>
+        </form>
+        <small>
+            <p>Don't have an account?<a class="sign-up" [routerLink]="['/auth/register']"> Sign-up</a></p>
+</small>
+  <p  class="error-message" *ngIf="errorMessage">{{errorMessage}}</p>
+    </div>
+    <div class="sect2">
+    </div>
+
+</div>

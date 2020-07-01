@@ -1,0 +1,43 @@
+.container{
+    margin: 20px; 
+}
+
+.chartCard{
+  width: 95%;
+  min-height: 250px !important;
+}
+
+.cardSize{
+  min-height: 70px !important;
+  width: 25%;
+  background-color: white;
+  border-radius: 10px;
+}
+
+
+p{
+    margin-top: 10px;
+
+}
+table{
+  width: 100%;
+}
+
+
+.search{
+  margin: 10px;
+  width: 30%;
+  padding: 5px 10px;
+  border: 1px solid lightblue;
+  border-radius: 15px;
+}
+
+
+
+@media(max-width:400px){
+  .media-card{
+    display: flex;
+    flex-direction: column;
+    padding-left: 25px;
+  }
+}

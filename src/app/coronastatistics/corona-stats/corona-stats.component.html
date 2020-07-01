@@ -1,0 +1,91 @@
+<div class="container">
+  <h3>Country stats: <img [src]="usercountryCovidStats?.country_flag" height="25" alt="">
+    {{usercountryCovidStats?.Country|| 'Loading ...'}}
+  </h3>
+
+  <div  class="media-card" fxLayout="row" fxLayoutAlign="space-between center">
+    <mat-card class="cardSize">
+      <mat-card-header>
+        <div>
+          <p>TotalConfirmed</p>
+          <p style="color: #577FC2;">{{(usercountryCovidStats?.TotalConfirmed | number)|| 'Loading...'}}</p>
+        </div>
+      </mat-card-header>
+    </mat-card>
+    <mat-card class="cardSize">
+      <mat-card-header>
+        <div>
+
+          <p>Total Recovered</p>
+          <p style="color: #B9D64A;">{{(usercountryCovidStats?.TotalRecovered|number) || 'Loading...'}}</p>
+        </div>
+      </mat-card-header>
+    </mat-card>
+    <mat-card class="cardSize">
+      <mat-card-header>
+        <div>
+          <p>Total Deaths</p>
+          <p style="color: #DC564B;">{{(usercountryCovidStats?.TotalDeaths|number) || 'Loading...'}}</p>
+        </div>
+      </mat-card-header>
+    </mat-card>
+  </div>
+  <br><br>
+  <div>
+    <mat-form-field class="search">
+      <input [(ngModel)]="searchKey" matInput (keyup)="applyFilter()" placeholder="search world covid-stats by country">
+    </mat-form-field>
+  </div>
+  <div>
+    <table mat-table [dataSource]="matData" class="mat-elevation-z8">
+
+      <!--- Note that these columns can be defined in any order.        The actual rendered columns are set as a property on the row definition" -->
+
+      <ng-container matColumnDef="Country">
+
+        <th mat-header-cell *matHeaderCellDef>Country</th>
+        <td mat-cell *matCellDef="let element"> <img [src]="element.country_flag" height="20"
+            style="margin-right: 10px;">{{element.Country}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="Total">
+        <th mat-header-cell *matHeaderCellDef>Total</th>
+        <td mat-cell *matCellDef="let element">
+          <p style="color:#577FC2; ;">{{element.TotalConfirmed | number}}</p>
+        </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="Recovered">
+        <th mat-header-cell *matHeaderCellDef>Recovered</th>
+        <td mat-cell *matCellDef="let element">
+          <p style="color: #B9D64A;;">{{element.TotalRecovered | number}}</p>
+        </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="Deaths">
+        <th mat-header-cell *matHeaderCellDef>Deaths</th>
+        <td mat-cell *matCellDef="let element">
+          <p style="color: #DC564B;;">{{element.TotalDeaths | number}}</p>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSize]="5"></mat-paginator>
+  </div>
+  <br>
+  <h3>World chart</h3>
+    <mat-card class="chartCard">
+    <div fxLayout="row" fxLayoutAlign="center center">
+    <mat-card-content>
+      <div id="geo" style="height:50%; width:100%;" ></div>
+    </mat-card-content> 
+  </div>
+  </mat-card>
+  
+
+</div>
